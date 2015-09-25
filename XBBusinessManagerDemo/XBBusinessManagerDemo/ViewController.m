@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "AFNetworking.h"
 @interface ViewController ()
 
 @end
@@ -16,12 +16,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)test2
+{
+    
+}
+
+
+- (void)test1
+{
+    NSDictionary *params = @{
+                             @"xxx":@"ooo"
+                             };
+    [[AFHTTPRequestOperationManager manager] POST:@"http://www.baidu.com" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //do someing
+        //eg : [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //do someing
+    }];
 }
 
 @end
