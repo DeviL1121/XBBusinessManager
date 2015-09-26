@@ -39,6 +39,6 @@
 1. 需要加入网络监控功能需在appDelegate中导入`AppDelegate+XBNetworkingMonitor`分类,在启动时调用`startMonitor`方法.
 2. 具体请求后获取数据需实现`XBBusinessDelegate`协议,协议内包含四个方法,分别表示获取数据成功,获取数据失败,网络断开,和使用蜂窝数据四种情况.之所以只使用delegate的方式,是因为曾经维护过的一个老项目中导出都是block调用,可追踪性太差,维护起来简直头大.单一的方式可以提供更好的可维护性.block确实使用十分方便,但滥用的后果也十分严重.个人也有一个简单的开源库使用了block,如果在该项目中使用delegate的话有兴趣的可以试试.代码地址戳这里[XBSettingController](https://github.com/changjianfeishui/XBSettingController).
 ##最后的话
-`XBBusinessManager`只是个人的一点小想法,由于水平有限,期待与各位同仁就更多好的开发方式方法进行探讨.
+`XBBusinessManager`只是个人的一点小想法,写的比较简单,更多细节请查看源码,由于水平有限,期待与各位同仁就更多好的开发方式方法进行探讨.
 
 
