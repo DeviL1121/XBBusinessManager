@@ -34,10 +34,7 @@ static XBBusinessManager *_manager;
 
 + (instancetype)businessManager {
     
-    if (!_manager) {
-        _manager = [[self alloc]init];
-    }
-    
+    _manager = [[self alloc]init];    
     return _manager;
 }
 
