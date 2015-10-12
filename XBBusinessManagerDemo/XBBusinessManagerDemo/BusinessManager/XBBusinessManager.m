@@ -104,8 +104,12 @@ static XBBusinessManager *_manager;
         if ([self.delegate respondsToSelector:@selector(XBBusinessDataFetchedSuccess:forAction:andIdentifier:)]) {
             
             if (dataClass) {
-                [self.delegate XBBusinessDataFetchedSuccess:[dataClass objectArrayWithKeyValuesArray:result] forAction:action andIdentifier:self.identifier];
-            }else
+                if ([result isKindOfClass:[NSDictionary class]]) {
+                    [self.delegate XBBusinessDataFetchedSuccess:[dataClass objectWithKeyValues:result] forAction:action andIdentifier:self.identifier];
+                }else
+                {
+                    [self.delegate XBBusinessDataFetchedSuccess:[dataClass objectArrayWithKeyValuesArray:result] forAction:action andIdentifier:self.identifier];
+                }            }else
             {
                 [self.delegate XBBusinessDataFetchedSuccess:result forAction:action andIdentifier:self.identifier];
 
@@ -125,8 +129,12 @@ static XBBusinessManager *_manager;
     [XBBaseHttpRequestHelper post:urlStr params:params success:^(id result) {
         if ([self.delegate respondsToSelector:@selector(XBBusinessDataFetchedSuccess:forAction:andIdentifier:)]) {
             if (dataClass) {
-                [self.delegate XBBusinessDataFetchedSuccess:[dataClass objectArrayWithKeyValuesArray:result] forAction:action andIdentifier:self.identifier];
-            }else
+                if ([result isKindOfClass:[NSDictionary class]]) {
+                    [self.delegate XBBusinessDataFetchedSuccess:[dataClass objectWithKeyValues:result] forAction:action andIdentifier:self.identifier];
+                }else
+                {
+                    [self.delegate XBBusinessDataFetchedSuccess:[dataClass objectArrayWithKeyValuesArray:result] forAction:action andIdentifier:self.identifier];
+                }            }else
             {
                 [self.delegate XBBusinessDataFetchedSuccess:result forAction:action andIdentifier:self.identifier];
                 
